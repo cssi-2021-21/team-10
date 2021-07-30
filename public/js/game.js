@@ -19,5 +19,5 @@ window.onload = (event) => {
 }
 //gets the words from the database
 const getWords = (userId) => {
-
+    //we now make an api call to get a list of words. We loop through the list of words to make sure they aren't repeated
 }
