@@ -20,14 +20,15 @@ window.onload = (event) => {
 //gets the words from the database
 const getWords = (userId) => {
     //we now make an api call to get a list of words. We loop through the list of words to make sure they aren't repeated
-    const randomWordAPI = 'http://random-word-api.herokuapp.com/all?swear=0' //making sure no swear words so it's pg
+    const randomWordAPI = 'https://random-word-api.herokuapp.com/all?swear=0' //making sure no swear words so it's pg
+    let words 
     fetch(randomWordAPI)
         .then(res => res.json())
         .then(myJson => {
-            console.log(myJson.data)
+            words = myJson
         })
         .catch(err => {
             console.log('error was', err)
         })
-
+    //we now choose a random element from our list of words 
 }
