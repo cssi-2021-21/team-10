@@ -1,0 +1,17 @@
+#greeting {
+  padding: 20px;
+  margin: 20px;
+  background-color: #f5e069;
+  border: 3px solid white;
+  color: #c98d00;
+  font-size: 40px;
+}
+
+#about {padding: 20px;
+  margin: 70px;
+  background-color: white;
+  border: 3px solid rgb(255, 197, 7);
+  color: #c98d00;
+  font-size: 20px;
+
+}
