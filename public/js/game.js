@@ -113,7 +113,7 @@ const getWordDefenition = (word) => {
 const onSubmit= (elementId) => {
   const element = document.querySelector(`#${elementId}`)
   const word = element.innerHTML.trim().replace(/[\r\n]+/gm, '')
-  const defenition = document.querySelector("#defenition").trim().replace(/[\r\n]+/gm, '')
+  const defenition = document.querySelector("#defenition").innerHTML.trim().replace(/[\r\n]+/gm, '')
   if(getWordDefenition(word) == defenition){
       const scoreVal = document.querySelector("#score")
       scoreVal.innerHTML = `Score : ${++score}`
