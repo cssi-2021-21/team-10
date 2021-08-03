@@ -2,7 +2,8 @@ console.log('game script is running!')
 console.log('api key', key)
 
 let googleUserId
-
+let words 
+let score = 0
 //when the user starts the game, we load up a list of words 
 window.onload = (event) => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -22,7 +23,6 @@ window.onload = (event) => {
 const getWords = (userId) => {
     //we now make an api call to get a list of words. We loop through the list of words to make sure they aren't repeated
     const randomWordAPI = 'https://random-word-api.herokuapp.com/all?swear=0' //making sure no swear words so it's pg
-    let words 
     fetch(randomWordAPI)
         .then(res => res.json())
         .then(myJson => {
@@ -45,7 +45,7 @@ const getWords = (userId) => {
     }
     else{
         //update this by rendering it into html
-        updateGameHTML(userID, words)
+        updateGameHTML()
     }
 }
 
@@ -85,8 +85,9 @@ const getPastSeenWords = (userId) => {
     return seenWords
 }
 //this updates the html
-const updateGameHTML = (userID, words) => {
+const updateGameHTML = (words) => {
     if(!words){
+        alert('The game has finished!')
         window.location = '../results.html'
     }
     const word = words.pop()
@@ -111,7 +112,13 @@ const getWordDefenition = (word) => {
 
 const onSubmit= (elementId) => {
   const element = document.querySelector(`#${elementId}`)
-  const word = element.innerHTML
-  console.log(word)
-  //reload options
+  const word = element.innerHTML.trim().replace(/[\r\n]+/gm, '')
+  const defenition = document.querySelector("#defenition").trim().replace(/[\r\n]+/gm, '')
+  if(getWordDefenition(word) == defenition){
+      const scoreVal = document.querySelector("#score")
+      scoreVal.innerHTML = `Score : ${++score}`
+  }
+  else{
+      updateGameHTML()
+  }
 }
