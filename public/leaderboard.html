@@ -25,49 +25,91 @@
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <script src="js/signIn.js"></script>
     <link rel="stylesheet" href="css/style.css" />
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            color: rgb(36, 124, 73)
+        }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
 </head>
+<style>
+    body {
+        background-image: url('https://images.pexels.com/photos/1237082/pexels-photo-1237082.jpeg?cs=srgb&dl=pexels-stefan-robinson-1237082.jpg&fm=jpg'
+            );
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    #board {
+        border: 2px solid green;
+        text-align: center;
+        border-radius: 15px 50px 30px;
+        background: #73AD21;
+        padding: 50px;
+        width: 500px;
+        height: 300px;
+        top: 90%;
+        background-position: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn {
+        position: relative;
+        bottom: 1px;
+
+    }
+
+    .button:hover {
+        background-color: orange;
+    }
+</style>
 
 <body>
     <section>
-        <h1 id='leaderboard'>
-            Leaderboard
-        </h1>
-        <div>
-              <table id="table">
-            <tr>
-                <th>Ranking</th>
-                <th>Name</th>
-                <th>Score</th>
-            </tr>
-            </table>
-        </div>
-        <div>
-
-            <a class="btn" href="game.html" target="blank">
-                <button class="button is-danger is-active vertical-align:middle" style= background-color:blueviolet>
-                    <span>Play</span>
-                </button></a>
-            <a class="btn" href="index.html" target="blank">
-                <button class="button is-danger is-active vertical-align:middle">
-                    <span>Go back to title screen</span>
-                </button></a>
+        <div id="board">
+            <h1 id='leaderboard' style="color:darkslateblue">
+                Leaderboard
+            </h1>
+            <div>
+                <table id="table">
+                    <tr>
+                        <th>Ranking</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        <td> fkbnkjgnvkjn </td>
+                        <td> fkbnkjgnvkjn </td>
+                        <td> fkbnkjgnvkjn </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="buttonDiv">
+                <br>
+                <a class="btn" href="game.html" target="blank">
+                    <button class="button is-danger is-active vertical-align:middle" style=background-color:blueviolet>
+                        <span>Play</span>
+                    </button></a>
+                <a class="btn" href="index.html" target="blank">
+                    <button class="button is-danger is-active vertical-align:middle">
+                        <span>Go back to title screen</span>
+                    </button></a>
+            </div>
         </div>
     </section>
 
