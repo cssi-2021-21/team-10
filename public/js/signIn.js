@@ -11,7 +11,7 @@ const signIn = () => {
     // The signed-in user info.
     var user = result.user;
     console.log(user)
-    window.location = '../game.html';
+    window.location = '../leaderboard.html';
   }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
