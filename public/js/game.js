@@ -40,14 +40,16 @@ const getWords = (userId) => {
     words = ([...words]).slice(0, 10) //converting it into an array and taking the first 10 words from it
     if(words.length < 10){
         //inform the user that we have run out of words
-        alert('Sorry, but we have run out of words')
+        alert('Sorry, but we have run out of words. Come back later when we have updated our database')
         window.location = '../index.html'
     }
     else{
         //update this by rendering it into html
-        renderDataAsHTML(userID, words)
+        updateGameHTML(userID, words)
     }
 }
+
+
 
 /*
 
@@ -82,16 +84,34 @@ const getPastSeenWords = (userId) => {
     })
     return seenWords
 }
-
-const renderDataAsHTML = (userID, words) => {
-    
+//this updates the html
+const updateGameHTML = (userID, words) => {
+    if(!words){
+        window.location = '../results.html'
+    }
+    const word = words.pop()
+    const wordDefenition = getWordDefenition(word)
+    document.querySelector("#defenition").innerHTML = wordDefenition
+    document.querySelector(`#choice1`).innerHTML = word
+    for(let i = 2; i < 5; i++){
+        document.querySelector(`#choice${i}`).innerHTML = word[i]
+    }
+    //this has a ton of edge cases, so I'm just hard coding it right now
 }
 
-const onSubmit= (id) => {
-  const element = document.querySelector(`#${id}`)
+const getWordDefenition = (word) => {
+    const url = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${key}`
+    fetch(url)
+    .then(res => res.json())
+    .then (myJson => {
+        console.log(myJson)
 
-  if (meaning){ //random but say this is if this is the correct choice{
-    //increment score   
-  }
+    })
+}
+
+const onSubmit= (elementId) => {
+  const element = document.querySelector(`#${elementId}`)
+  const word = element.innerHTML
+  console.log(word)
   //reload options
 }
