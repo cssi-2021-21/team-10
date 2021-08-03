@@ -1,4 +1,5 @@
 console.log('game script is running!')
+console.log('api key', key)
 
 let googleUserId
 
@@ -84,4 +85,13 @@ const getPastSeenWords = (userId) => {
 
 const renderDataAsHTML = (userID, words) => {
     
+}
+
+const onSubmit= (id) => {
+  const element = document.querySelector(`#${id}`)
+
+  if (meaning) //random but say this is if this is the correct choice{
+    //increment score   
+  }
+  //reload options
 }
