@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hello Bulma!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-     
-  </head>
-  <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Hello World
-      </h1>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vocab Quiz</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
-
   <body>
-    <section class="hero is-small notification is-info has-text-centered">
-      <div class="hero-body">
-        <p class="title">
-          Vocabulary Quiz
-        </p>
-        <p class="subtitle">
-          Can you level up your vocabulary?
-        </p>
-      </div>
-    </section>
-    <div class="container">
-      <section class="section">
-        <!--<h1 class="title">Make some guesses!</h1>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          Hello World
+        </h1>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1.0"
+            />
+            <title>Vocab Quiz</title>
+            <link
+              rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+            />
+            <link rel="stylesheet" href="style.css" type="text/css" />
+          </head>
+
+          <body>
+            <section
+              class="hero is-small notification is-info has-text-centered"
+            >
+              <div class="hero-body">
+                <p class="title">
+                  Vocabulary Quiz
+                </p>
+                <p class="subtitle">
+                  Can you level up your vocabulary?
+                </p>
+              </div>
+            </section>
+            <div class="container">
+              <section class="section">
+                <!--<h1 class="title">Make some guesses!</h1>
       <h2 class="subtitle">
         Type your guesses below! If you get a match, it should show up instantly.
       </h2>
@@ -47,59 +54,61 @@
       <button id = "reset" class = "button">
         Reset
       </button> -->
-        <!-- first row --> 
-        <div class="columns">
-          <!-- we make sure all our dext in this row has centered text --> 
-          <div class = "column has-text-centered">
-            <h1 class="title">
-              Welcome
-            </h1>
-            <h2 class="subtitle">
-              Can you guess the word based on its meaning?                                                                    
-            </h2>
-          </div>  
-        </div>
-        <!-- answer choices -->
-        <div class = "columns">
-          <div class = "column">
-              <button class="button is-large is-fullwidth">Choice 1</button>
-          </div>
-        
-          <div class = "column">
-              <button class="button is-large is-fullwidth">Choice 2</button>
-          </div>
-          <div class = "column">
-              <button class="button is-large is-fullwidth">Choice 3</button>
-          </div>
-          <div class = "column">
-              <button class="button is-large is-fullwidth">Choice 4</button>
-          </div>
-        </div>
-      </section>
-      <section class="section">
-        <h1 id="score" class="subtitle">
-          Score: 0
-        </h1>
-        <h1 id="numGuess" class="subtitle">
-          Guesses left: 10
-        </h1>
-      </section>
+                <progress class="progress" value="15" max="100">15%</progress>
+                <!-- first row -->
+                <div class="columns">
+                  <!-- we make sure all our dext in this row has centered text -->
+                  <div class="column has-text-centered">
+                    <h1 class="title">
+                      Welcome
+                    </h1>
+                    <h2 class="subtitle">
+                      Can you guess the word based on its meaning?
+                    </h2>
+                  </div>
+                </div>
+                <!-- answer choices -->
+                <div class="columns">
+                  <div class="column">
+                    <button id = "choice1" class="button is-large is-fullwidth" onclick = "onSubmit(this.id)">
+                      Choice 1
+                    </button>
+                  </div>
 
-    </div>
-    <footer class="footer notification is-info mt-5 mb-0">
-      <div class="content has-text-centered">
-        <p class="subtitle">
-          Thanks for playing!
-        </p>
-        <p>
-          Source:
-          <a
-            href="https://www.accreditedlanguage.com/languages/the-10-most-popular-languages-in-the-us/"
-            >Accredited Language Services</a
-          >, translations of "Hello World" prodived by Google Translate
-        </p>
+                  <div class="column">
+                    <button id = "choice2" class="button is-large is-fullwidth" onclick = "onSubmit(this.id)">
+                      Choice 2
+                    </button>
+                  </div>
+                  <div class="column">
+                    <button id = "choice3" class="button is-large is-fullwidth" onclick = "onSubmit(this.id)">
+                      Choice 3
+                    </button>
+                  </div>
+                  <div class="column">
+                    <button id = "choice4" class="button is-large is-fullwidth" onclick = "onSubmit(this.id)">
+                      Choice 4
+                    </button>
+                  </div>
+                </div>
+              </section>
+              <section class="section">
+                <h1 id="score" class="subtitle">
+                  Score: 0
+                </h1>
+              </section>
+            </div>
+            <footer class="footer notification is-info mt-5 mb-0">
+              <div class="content has-text-centered">
+                <p class="subtitle">
+                  Thanks for playing!
+                </p>
+              </div>
+            </footer>
+            <script src="script.js" type="text/javascript" defer></script>
+          </body>
+        </html>
       </div>
-    </footer>
-    <script src="script.js" type="text/javascript" defer></script>
+    </section>
   </body>
 </html>
