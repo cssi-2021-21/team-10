@@ -83,5 +83,5 @@ const getPastSeenWords = (userId) => {
 }
 
 const renderDataAsHTML = (userID, words) => {
-
+    
 }
