@@ -25,7 +25,23 @@
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <script src="js/signIn.js"></script>
     <link rel="stylesheet" href="css/style.css" />
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 </head>
 
 <body>
@@ -36,9 +52,9 @@
         <div>
               <table id="table">
             <tr>
-                <td>Ranking</td>
-                <td>Name</td>
-                <td>Score</td>
+                <th>Ranking</th>
+                <th>Name</th>
+                <th>Score</th>
             </tr>
             </table>
         </div>
