@@ -27,6 +27,13 @@
    
  
 }
-#signInButton:hover{
+.button:hover{
   background-color:orange;
+}
+
+
+.btn{
+  position: relative;
+  bottom: 1px;
+
 }

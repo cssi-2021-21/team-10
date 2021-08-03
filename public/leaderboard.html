@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vocab Game</title>
+    <title>Leaderboard</title>
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/8.8.1/firebase-app.js"></script>
@@ -26,36 +26,35 @@
     <script src="js/signIn.js"></script>
     <link rel="stylesheet" href="css/style.css" />
 
-
 </head>
-<style>
-    body {
-        background-image: url('https://www.brandknewmag.com/wp-content/uploads/2020/02/market_577.jpg'
-            );
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-</style>
 
 <body>
-    <section id="greeting">
-        <h1>
-            VOCAB GAME
+    <section>
+        <h1 id='leaderboard'>
+            Leaderboard
         </h1>
+        <div>
+              <table id="table">
+            <tr>
+                <td>Ranking</td>
+                <td>Name</td>
+                <td>Score</td>
+            </tr>
+            </table>
+        </div>
+        <div>
+
+            <a class="btn" href="game.html" target="blank">
+                <button class="button is-danger is-active vertical-align:middle" style= background-color:blueviolet>
+                    <span>Play</span>
+                </button></a>
+            <a class="btn" href="index.html" target="blank">
+                <button class="button is-danger is-active vertical-align:middle">
+                    <span>Go back to title screen</span>
+                </button></a>
+        </div>
     </section>
-    <div id="about">
-        <p class="subtitle is-size-6" style="text-align:center">
-            You'll have to sign in before you play if you want to keep track of your score!
-        </p>
-        
-             <p  class="has-text-centered">
-            <a class="button is-medium is-info is-outlined" id="signInButton" onclick="signIn()">
-               Sign In
-            </a>
-        </p>
- 
-    </div>
+
 
 </body>
 
