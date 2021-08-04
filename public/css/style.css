@@ -81,3 +81,33 @@
     background-color:gainsboro;
     text-align:center;
 }
+ #count{
+      font-size: 15px;
+ }
+
+
+ #vocab{
+     font-size: 100px;
+ 
+ }
+
+ #mainSub{
+     color:rgb(49, 49, 46);
+ }
+ #defenition{
+      font-weight: bold;
+ }
+
+#mainSec {
+     background-image: url('https://www.studyright.net/wp-content/uploads/2014/07/use-flashcards-effectively.jpg');
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+                }
+
+
+#tile1{
+    background-color: #fc0345;
+    width:10%;
+    
+}

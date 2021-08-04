@@ -213,7 +213,6 @@ startBtn.addEventListener("click", () => {
               times[index] = 10- timeSecond;
               index+=1; */
 
-            console.log("HIIIIIIIIIII") // console.log(times[index])
 
             // clearInterval(countDown);
             timeSecond = 10;
@@ -225,8 +224,8 @@ startBtn.addEventListener("click", () => {
     function displayTime(second) {
         const min = Math.floor(second / 60);
         const sec = Math.floor(second % 60);
-        timeH.innerHTML = `
-  ${min < 11 ? "0" : ""}${min}:${sec < 11 ? "0" : ""}${sec}
+        timeH.innerHTML = ` <b><font size="8">
+  ${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}</font></b>
   `;
     }
 

@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <section class="section" style="background-color:#f5d142">
+    <section class="section" id="mainSec" style="background-color:#f5d142">
         <div class="container">
             <html lang="en">
 
@@ -40,15 +40,17 @@
                 <link rel="stylesheet" href="css/style.css" type="text/css" />
             </head>
 
+
             <body>
 
                 <section class="hero is-small notification is-info has-text-centered">
                     <div class="hero-body">
-                        <p class="title">
+                        <p class="title" id="vocab">
                             Vocabulary Quiz
                         </p>
-                        <p class="subtitle">
-                            Can you level up your vocabulary?
+                        <br>
+                        <p class="subtitle" id="mainSub">
+                            <b>Can you level up your vocabulary?</b>
                         </p>
                     </div>
                 </section>
@@ -56,32 +58,33 @@
                     <section class="section">
                         <section id="timer">
                             <div class="container">
-                                <h1>00:00</h1>
+                                <h1 id="count"><b>00:00</b></h1>
                             </div>
                         </section>
+
                         <div id="bar">
                             <progress class="progress" value="0" max="100">0%</progress>
                         </div>
-
+                        <br>
                         <div id="gameBody" style="background-color:white">
 
                             <!--ROW 1-->
                             <div class="columns has-text-centered">
                                 <!-- we make sure all our text in this row has centered text -->
-                                <div class="column">
+                                <div class="column" style="background-color: white">
                                     <h1 class="title">
                                         Welcome
                                     </h1>
                                     <h2 class="subtitle">
                                         Can you guess the word based on its meaning?
                                     </h2>
-                                    <h1 id="defenition" class="subtitle hidden"></h1>
+                                    <h1 id="defenition" class="subtitle hidden" style="color:crimson"></h1>
                                 </div>
                             </div>
                             <!-- ROW 2 -->
                             <div class="columns is-centered is-variable is-5">
 
-                                <div class="column is-one-quarter ">
+                                <div class="column is-one-quarter is-centered ">
                                     <button id="startBtn"
                                         class="button is-danger is-active vertical-align:middle">START</button>
                                 </div>
@@ -90,7 +93,7 @@
                             <div class="tile is-ancestor">
                                 <div class="tile is-parent is-4">
                                     <div class="tile is-child notification is-info  has-text-centered hidden"
-                                        id="hiddenTile">                            
+                                        id="hiddenTile">
                                         <div class="columns">
                                             <div class="column">
                                                 <button id="choice1" class="button is-large is-fullwidth "
@@ -119,11 +122,23 @@
                             </div>
                         </div>
                     </section>
-                    <section class="section">
+                    <!-- <section class="section">
                         <h1 id="score" class="subtitle">
                             Score: 0
                         </h1>
-                    </section>
+                    </section> -->
+
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent is-4">
+                            <div class="tile is-child notification is-info"  id="tile1">
+                                <p  id="score">Score: 0</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
                 <footer class="footer notification is-info mt-5 mb-0">
                     <div class="content has-text-centered">
