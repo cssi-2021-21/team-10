@@ -1,5 +1,5 @@
 console.log('game script is running!')
-console.log('api key', key)
+//console.log('api key', key)
 
 let googleUserId
 let words 
