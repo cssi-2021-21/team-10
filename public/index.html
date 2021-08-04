@@ -30,33 +30,89 @@
 </head>
 <style>
     body {
-        background-image: url('https://www.brandknewmag.com/wp-content/uploads/2020/02/market_577.jpg'
+        background-image: url('https://undark.org/wp-content/uploads/2018/04/lang2.jpg'
             );
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
     }
+
+    #greeting {
+        padding: 20px;
+        margin: 20px;
+        background-color: #f5e069;
+        border: 3px solid white;
+        color: #c98d00;
+        font-size: 40px;
+    }
+
+    #about {
+
+        background-color: white;
+        border: 3px solid rgb(255, 197, 7);
+        color: #c98d00;
+        font-size: 20px;
+        height: 15vh;
+        padding: 10px;
+
+    }
+
+
+
+    #signInButton {
+        background-color: #008CBA;
+        color: rgb(233, 189, 107);
+        border: none;
+        padding: 15px 32px;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+
+
+    }
+
+    #signInButton:hover {
+        background-color: rebeccapurple;
+    }
+
+    .center {
+        margin: 0;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
 </style>
 
 <body>
     <section id="greeting">
-        <h1>
+        <h1 style="text-align:center">
             VOCAB GAME
         </h1>
     </section>
-    <div id="about">
+    <marquee behavior="scroll" direction="right" scrollamount="16" style="color:dodgerblue">words</marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="10" style="color:#eb4034">words...</marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="20" style="color:greenyellow">words</marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="50" style=color:mediumslateblue>words</marquee>
+
+    <div id="about" class="center">
         <p class="subtitle is-size-6" style="text-align:center">
             You'll have to sign in before you play if you want to keep track of your score!
         </p>
-        
-             <p  class="has-text-centered">
-            <a class="button is-medium is-info is-outlined" id="signInButton" onclick="signIn()">
-               Sign In
+
+        <p class="has-text-centered">
+            <a class="button is-medium is-info is-outlined center" id="signInButton" onclick="signIn()">
+                <b>Sign In</b>
             </a>
         </p>
- 
-    </div>
 
+    </div>
 </body>
+<br>
+<marquee behavior="scroll" direction="left" scrollamount="14" style=color:mediumvioletred>words</marquee>
+<marquee behavior="scroll" direction="right" scrollamount="10" style=color:orangered>words...</marquee>
+<marquee behavior="scroll" direction="left" scrollamount="20" style=color:lightseagreen>words</marquee>
+<marquee behavior="scroll" direction="right" scrollamount="50" style=color:lightsalmon>words</marquee>
 
 </html>
