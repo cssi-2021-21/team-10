@@ -150,7 +150,7 @@ const updateGameHTML = () => {
         document.querySelector("#defenition").innerHTML = wordDefenition
         document.querySelector(`#choice1`).innerHTML = word
         for(let i = 2; i < 5; i++){
-            document.querySelector(`#choice${i}`).innerHTML = word[i] || 'something random'
+            document.querySelector(`#choice${i}`).innerHTML = words[i] || 'something random'
         }
     //this has a ton of edge cases, so I'm just hard coding it right now
     }

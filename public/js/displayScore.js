@@ -1,3 +1,2 @@
-console.log('your score', score)
-
-document.querySelector("#totalScore").innerHTML = `Your Score: ${score}`
+console.log('script running')
+//get data from api and display score
