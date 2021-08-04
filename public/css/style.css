@@ -61,23 +61,23 @@
       padding:20px;
 }
 
-
-
-/*timer*/
-.base-timer {
-  position: relative;
-  height: 300px;
-  width: 300px;
+.hidden {
+  display: none;
 }
 
-/* Removes SVG styling that would hide the time label */
-.base-timer__circle {
-  fill: none;
-  stroke: none;
+
+#startBtn{
+      text-align: center;
+      border-radius: 50%;
+      font-size: 15px;
+      background-color:#fc0345;
+    
+}
+#startBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-/* The SVG path that displays the timer's progress */
-.base-timer__path-elapsed {
-  stroke-width: 7px;
-  stroke: grey;
+#hiddenTile{
+    background-color:gainsboro;
+    text-align:center;
 }

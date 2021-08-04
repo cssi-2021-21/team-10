@@ -2,19 +2,19 @@ console.log('game script is running!')
 //console.log('api key', key)
 
 let googleUserId
-let words 
-let defenitions 
+let words
+let defenitions
 let temp = {}
 let score = 0
 //when the user starts the game, we load up a list of words 
 window.onload = (event) => {
     firebase.auth().onAuthStateChanged((user) => {
-        if(user){
+        if (user) {
             //check if the user has logged in
             googleUserId = user.uid
             getWords(googleUserId)
         }
-        else{
+        else {
             //navigate back to the login page
             window.location = "index.html"
         }
@@ -79,21 +79,21 @@ const getWords = (userID) => {
         'f',
         'g',
         'h',
-        'i', 
+        'i',
         'j',
         'k',
         'l'
     ]
-    for(let i = 0; i < words.length; i++){
+    for (let i = 0; i < words.length; i++) {
         temp[words[i]] = defenitions[i]
     }
-    
-    if(words.length < 10){
+
+    if (words.length < 10) {
         //inform the user that we have run out of words
         alert('Sorry, but we have run out of words. Come back later when we have updated our database')
         window.location = '../index.html'
     }
-    else{
+    else {
         //update this by rendering it into html
         updateGameHTML()
     }
@@ -138,67 +138,121 @@ const getPastSeenWords = (userId) => {
 //this updates the html
 const updateGameHTML = () => {
     console.log('words', words)
-    if(!words.length){
+    if (!words.length) {
         alert('The game has finished!')
-        window.location = '../results.html' 
+        window.location = '../results.html'
     }
-    else{
+    else {
         const word = words.pop()
         console.log('word', word)
         const wordDefenition = getWordDefenition(word)
         console.log('its defenition', wordDefenition)
         document.querySelector("#defenition").innerHTML = wordDefenition
         document.querySelector(`#choice1`).innerHTML = word
-        for(let i = 2; i < 5; i++){
+        for (let i = 2; i < 5; i++) {
             document.querySelector(`#choice${i}`).innerHTML = words[i] || 'something random'
         }
-    //this has a ton of edge cases, so I'm just hard coding it right now
+        //this has a ton of edge cases, so I'm just hard coding it right now
     }
 }
 
 const getWordDefenition = (word) => {
-   /* const url = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${key}`
-    fetch(url)
-    .then(res => res.json())
-    .then (myJson => {
-        console.log(myJson)
+    /* const url = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${key}`
+     fetch(url)
+     .then(res => res.json())
+     .then (myJson => {
+         console.log(myJson)
+ 
+     })
+     */
 
-    })
-    */
-  
-   return temp[word]
-}
-
-const onSubmit= (elementId) => {
-  console.log(words)
-  const element = document.querySelector(`#${elementId}`)
-  const word = element.innerHTML.trim().replace(/[\r\n]+/gm, '')
-  const defenition = document.querySelector("#defenition").innerHTML.trim().replace(/[\r\n]+/gm, '')
-  if(getWordDefenition(word) === defenition){
-      const scoreVal = document.querySelector("#score")
-      console.log('score', score)
-      scoreVal.innerHTML = `Score : ${++score}`
-  }
-  updateGameHTML()
+    return temp[word]
 }
 
 
+const times = [];     ///NICOLE ADDED
+const index = 0;
 
-/*
-//timer
-document.getElementById("app").innerHTML = `
-<div class="base-timer">
-  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <g class="base-timer__circle">
-      <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
-    </g>
-  </svg>
-  <span>
-    <!-- Remaining time label -->
-  </span>
-</div>
-`;
-console.log("timer is working")
+const onSubmit = (elementId) => {
+
+    console.log(words)
+    const element = document.querySelector(`#${elementId}`)
+    const word = element.innerHTML.trim().replace(/[\r\n]+/gm, '')
+    const defenition = document.querySelector("#defenition").innerHTML.trim().replace(/[\r\n]+/gm, '')
+    if (getWordDefenition(word) === defenition) {
+        const scoreVal = document.querySelector("#score")
+        console.log('score', score)
+        scoreVal.innerHTML = `Score : ${++score}`
+    }
 
 
+
+    updateGameHTML()
+    timeSecond = 10; //time reset for each question
+
+
+}
+
+
+//time
+timeSecond = 10;
+const startBtn = document.querySelector("#startBtn")
+startBtn.addEventListener("click", () => {
+    defenition = document.querySelector("#defenition")
+    defenition.classList.remove("hidden")
+    hiddenTile = document.querySelector("#hiddenTile")
+    hiddenTile.classList.remove("hidden");
+    const timeH = document.querySelector("h1");
+    //const startBtn= document.querySelector("#startBtn")
+    startBtn.style.display = 'none';
+    displayTime(timeSecond);
+
+    const countDown = setInterval(() => {
+        timeSecond--;
+        displayTime(timeSecond);
+        if (timeSecond == 0 || timeSecond < 1) {
+            /* endCount();
+              times[index] = 10- timeSecond;
+              index+=1; */
+
+            console.log("HIIIIIIIIIII") // console.log(times[index])
+
+            // clearInterval(countDown);
+            timeSecond = 10;
+            updateGameHTML();
+            timeSecond = 10;
+
+        }
+    }, 1000);
+    function displayTime(second) {
+        const min = Math.floor(second / 60);
+        const sec = Math.floor(second % 60);
+        timeH.innerHTML = `
+  ${min < 11 ? "0" : ""}${min}:${sec < 11 ? "0" : ""}${sec}
+  `;
+    }
+
+})
+
+
+
+function endCount() {
+    timeH.innerHTML = "Time out";
+}
+
+
+/* Working on progress bar
+updateBar = (num) => {
+
+bar= document.querySelector("#progress1");
+bar.innerHTML = ' <progress class="progress"  value="${num+=10}" max="100">${num+=10}%</progress>'
+}
 */
+
+
+
+
+
+
+
+

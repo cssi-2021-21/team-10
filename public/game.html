@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Game</title>
@@ -22,102 +23,126 @@
       to avoid connecting the SDK to running emulators.
     -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+</head>
+
+<body>
     <section class="section" style="background-color:#f5d142">
-      <div class="container">
-        <html lang="en">
-          <head >
-            <meta charset="UTF-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1.0"
-            />
-            <title>Vocab Quiz</title>
-            <link
-              rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
-            />
-            <link rel="stylesheet" href="css/style.css" type="text/css" />
-          </head>
+        <div class="container">
+            <html lang="en">
 
-          <body>
-            <section
-              class="hero is-small notification is-info has-text-centered"
-            >
-              <div class="hero-body">
-                <p class="title">
-                  Vocabulary Quiz
-                </p>
-                <p class="subtitle">
-                  Can you level up your vocabulary?
-                </p>
-              </div>
-            </section>
-            <div class="container">
-              <section class="section">
+            <head>
+                <meta charset="UTF-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Vocab Quiz</title>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+                <link rel="stylesheet" href="css/style.css" type="text/css" />
+            </head>
 
-                <progress class="progress" value="15" max="100">15%</progress>
-                <!-- first row -->
-                <div id="gameBody" style="background-color:white">
-                <div class="columns has-text-centered" >
-                  <!-- we make sure all our text in this row has centered text -->
-                  <div class="column">
-                    <h1 class="title">
-                      Welcome
-                    </h1>
-                    <h2 class="subtitle">
-                      Can you guess the word based on its meaning?
-                    </h2>
-                    <h1 id = "defenition" class = "subtitle"></h1> 
-                  </div>
+            <body>
+
+                <section class="hero is-small notification is-info has-text-centered">
+                    <div class="hero-body">
+                        <p class="title">
+                            Vocabulary Quiz
+                        </p>
+                        <p class="subtitle">
+                            Can you level up your vocabulary?
+                        </p>
+                    </div>
+                </section>
+                <div class="container">
+                    <section class="section">
+                        <section id="timer">
+                            <div class="container">
+                                <h1>00:00</h1>
+                            </div>
+                        </section>
+                        <div id="progress1">
+                            <progress class="progress" value="0" max="100">0%</progress>
+                        </div>
+
+                        <div id="gameBody" style="background-color:white">
+
+                            <!--ROW 1-->
+                            <div class="columns has-text-centered">
+                                <!-- we make sure all our text in this row has centered text -->
+                                <div class="column">
+                                    <h1 class="title">
+                                        Welcome
+                                    </h1>
+                                    <h2 class="subtitle">
+                                        Can you guess the word based on its meaning?
+                                    </h2>
+                                    <h1 id="defenition" class="subtitle hidden"></h1>
+                                </div>
+                            </div>
+                            <!-- ROW 2 -->
+                            <div class="columns is-centered is-variable is-5">
+
+                                <div class="column is-one-quarter ">
+                                    <button id="startBtn"
+                                        class="button is-danger is-active vertical-align:middle">START</button>
+                                </div>
+                            </div>
+                            <!-- answer choices -->
+                            <div class="tile is-ancestor">
+                                <div class="tile is-parent is-4">
+                                    <div class="tile is-child notification is-info  has-text-centered hidden"
+                                        id="hiddenTile">                            
+                                        <div class="columns">
+                                            <div class="column">
+                                                <button id="choice1" class="button is-large is-fullwidth "
+                                                    onclick="onSubmit(this.id)">
+                                                </button>
+                                            </div>
+
+                                            <div class="column">
+                                                <button id="choice2" class="button is-large is-fullwidth "
+                                                    onclick="onSubmit(this.id)">
+                                                </button>
+                                            </div>
+                                            <div class="column">
+                                                <button id="choice3" class="button is-large is-fullwidth "
+                                                    onclick="onSubmit(this.id)">
+                                                </button>
+                                            </div>
+                                            <div class="column">
+                                                <button id="choice4" class="button is-large is-fullwidth "
+                                                    onclick="onSubmit(this.id)">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section">
+                        <h1 id="score" class="subtitle">
+                            Score: 0
+                        </h1>
+                    </section>
                 </div>
-                <!-- answer choices -->
-                <div class="columns">
-                  <div class="column">
-                    <button id = "choice1" class="button is-large is-fullwidth" onclick = "onSubmit(this.id)">
-                    </button>
-                  </div>
+                <footer class="footer notification is-info mt-5 mb-0">
+                    <div class="content has-text-centered">
+                        <p class="subtitle">
+                            Thanks for playing!
+                        </p>
+                    </div>
+                </footer>
 
-                  <div class="column">
-                    <button id = "choice2" class="button is-large is-fullwidth" onclick = "onSubmit(this.id)">
-                    </button>
-                  </div>
-                  <div class="column">
-                    <button id = "choice3" class="button is-large is-fullwidth" onclick = "onSubmit(this.id)">
-                    </button>
-                  </div>
-                  <div class="column">
-                    <button id = "choice4" class="button is-large is-fullwidth" onclick = "onSubmit(this.id)">
-                    </button>
-                  </div>
-                </div>
-            </div>
-              </section>
-              <section class="section">
-                <h1 id="score" class="subtitle">
-                  Score: 0
-                </h1>
-              </section>
-            </div>
-            <footer class="footer notification is-info mt-5 mb-0">
-              <div class="content has-text-centered">
-                <p class="subtitle">
-                  Thanks for playing!
-                </p>
-              </div>
-            </footer>
+            </body>
 
-          </body>
-        </html>
-      </div>
+            </html>
+        </div>
     </section>
-  </body>
-            <!--<script src= "./js/key.js" type= "text/javascript"></script>-->
-            <script src="./js/game.js" type="text/javascript" ></script>
+
+
+
+</body>
+<!--<script src= "./js/key.js" type= "text/javascript"></script>-->
+<script src="./js/game.js" type="text/javascript"></script>
+
 </html>
