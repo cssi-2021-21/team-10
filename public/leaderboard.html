@@ -100,18 +100,30 @@
             </div>
             <div id="buttonDiv">
                 <br>
-                <a class="btn" href="../game.html" target="blank">
-                    <button class="button is-danger is-active vertical-align:middle" style=background-color:blueviolet>
-                        <span>Play</span>
-                    </button></a>
-                <a class="btn" href="index.html" target="blank">
-                    <button class="button is-danger is-active vertical-align:middle">
-                        <span>Go back to title screen</span>
-                    </button></a>
+                <button id="playButton" class="button is-danger is-active vertical-align:middle">
+                    Play
+                </button>
+
+                <button id="homeButton" class="button is-danger is-active vertical-align:middle">
+                    Go back to title screen
+                </button>
+
+                <script>
+                    play = document.querySelector("#playButton");
+                    play.addEventListener("click", () => {
+                        window.location='../game.html';
+                    })
+                    home = doucment.querySelector("#homeButton");
+                    home.addEventListener("click", () => {
+                        window.location='../index.html';
+                    })
+                </script>
+
             </div>
         </div>
     </section>
 
 
 </body>
+
 </html>
