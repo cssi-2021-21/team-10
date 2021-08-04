@@ -3,6 +3,8 @@ console.log('api key', key)
 
 let googleUserId
 let words 
+let defenitions 
+let temp = {}
 let score = 0
 //when the user starts the game, we load up a list of words 
 window.onload = (event) => {
@@ -19,14 +21,18 @@ window.onload = (event) => {
     }
     )
 }
+/*
 //gets the words from the database
 const getWords = (userId) => {
     //we now make an api call to get a list of words. We loop through the list of words to make sure they aren't repeated
+    console.log('called')
     const randomWordAPI = 'https://random-word-api.herokuapp.com/all?swear=0' //making sure no swear words so it's pg
     fetch(randomWordAPI)
         .then(res => res.json())
         .then(myJson => {
+            console.log('reached')
             words = new Set(myJson)
+            console.log('words', words)
         })
         .catch(err => {
             console.log('error was', err)
@@ -49,7 +55,49 @@ const getWords = (userId) => {
     }
 }
 
-
+*/
+const getWords = (userID) => {
+    words = [
+        'scarf',
+        'houses',
+        'optimal',
+        'check',
+        'preserve',
+        'actor',
+        'tan',
+        'yak',
+        'few',
+        'baby',
+        'bat',
+        'cellar']
+    defenitions = [
+        'a',
+        'b',
+        'c',
+        'd',
+        'e',
+        'f',
+        'g',
+        'h',
+        'i', 
+        'j',
+        'k',
+        'l'
+    ]
+    for(let i = 0; i < words.length; i++){
+        temp[words[i]] = defenitions[i]
+    }
+    
+    if(words.length < 10){
+        //inform the user that we have run out of words
+        alert('Sorry, but we have run out of words. Come back later when we have updated our database')
+        window.location = '../index.html'
+    }
+    else{
+        //update this by rendering it into html
+        updateGameHTML()
+    }
+}
 
 /*
 
@@ -70,6 +118,7 @@ user:
 
 */
 
+/*
 //this gets the past seen words of the user and returns a set of their past words
 const getPastSeenWords = (userId) => {
     const ref = firebase.database().ref(`users/${userId}`)
@@ -82,43 +131,53 @@ const getPastSeenWords = (userId) => {
             }
         }
     })
+    console.log('seen words', seenWords)
     return seenWords
 }
+*/
 //this updates the html
-const updateGameHTML = (words) => {
-    if(!words){
+const updateGameHTML = () => {
+    console.log('words', words)
+    if(!words.length){
         alert('The game has finished!')
-        window.location = '../results.html'
+        window.location = '../results.html' 
     }
-    const word = words.pop()
-    const wordDefenition = getWordDefenition(word)
-    document.querySelector("#defenition").innerHTML = wordDefenition
-    document.querySelector(`#choice1`).innerHTML = word
-    for(let i = 2; i < 5; i++){
-        document.querySelector(`#choice${i}`).innerHTML = word[i]
-    }
+    else{
+        const word = words.pop()
+        console.log('word', word)
+        const wordDefenition = getWordDefenition(word)
+        console.log('its defenition', wordDefenition)
+        document.querySelector("#defenition").innerHTML = wordDefenition
+        document.querySelector(`#choice1`).innerHTML = word
+        for(let i = 2; i < 5; i++){
+            document.querySelector(`#choice${i}`).innerHTML = word[i] || 'something random'
+        }
     //this has a ton of edge cases, so I'm just hard coding it right now
+    }
 }
 
 const getWordDefenition = (word) => {
-    const url = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${key}`
+   /* const url = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${key}`
     fetch(url)
     .then(res => res.json())
     .then (myJson => {
         console.log(myJson)
 
     })
+    */
+  
+   return temp[word]
 }
 
 const onSubmit= (elementId) => {
+  console.log(words)
   const element = document.querySelector(`#${elementId}`)
   const word = element.innerHTML.trim().replace(/[\r\n]+/gm, '')
   const defenition = document.querySelector("#defenition").innerHTML.trim().replace(/[\r\n]+/gm, '')
-  if(getWordDefenition(word) == defenition){
+  if(getWordDefenition(word) === defenition){
       const scoreVal = document.querySelector("#score")
+      console.log('score', score)
       scoreVal.innerHTML = `Score : ${++score}`
   }
-  else{
-      updateGameHTML()
-  }
+  updateGameHTML()
 }
