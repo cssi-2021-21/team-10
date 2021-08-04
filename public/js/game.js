@@ -170,8 +170,6 @@ const getWordDefenition = (word) => {
 }
 
 
-const times = [];     ///NICOLE ADDED
-const index = 0;
 
 const onSubmit = (elementId) => {
 
@@ -234,8 +232,6 @@ startBtn.addEventListener("click", () => {
 
 })
 
-
-
 function endCount() {
     timeH.innerHTML = "Time out";
 }
@@ -244,7 +240,7 @@ function endCount() {
 /* Working on progress bar
 updateBar = (num) => {
 
-bar= document.querySelector("#progress1");
+bar= document.querySelector("#bar");
 bar.innerHTML = ' <progress class="progress"  value="${num+=10}" max="100">${num+=10}%</progress>'
 }
 */
