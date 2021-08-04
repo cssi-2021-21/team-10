@@ -1,0 +1,83 @@
+#choice1 {
+  background-color:  #051c9e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 24px;
+  margin: 4px 2px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+#choice1:hover {opacity: 1}
+#choice2 {
+  background-color:  #051c9e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 24px;
+  margin: 4px 2px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+#choice2:hover {opacity: 1}
+
+#choice3 {
+  background-color:  #051c9e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 24px;
+  margin: 4px 2px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+#choice3:hover {opacity: 1}
+
+#choice4 {
+  background-color: #051c9e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 24px;
+  margin: 4px 2px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+#choice4:hover {opacity: 1}
+
+
+
+#gameBody{
+    background-color: white;
+      border:goldenrod;
+      padding:20px;
+}
+
+
+
+/*timer*/
+.base-timer {
+  position: relative;
+  height: 300px;
+  width: 300px;
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}

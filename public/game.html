@@ -28,13 +28,10 @@
     />
   </head>
   <body>
-    <section class="section">
+    <section class="section" style="background-color:#f5d142">
       <div class="container">
-        <h1 class="title">
-          Hello World
-        </h1>
         <html lang="en">
-          <head>
+          <head >
             <meta charset="UTF-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta
@@ -46,7 +43,7 @@
               rel="stylesheet"
               href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
             />
-            <link rel="stylesheet" href="style.css" type="text/css" />
+            <link rel="stylesheet" href="css/style.css" type="text/css" />
           </head>
 
           <body>
@@ -67,8 +64,9 @@
 
                 <progress class="progress" value="15" max="100">15%</progress>
                 <!-- first row -->
-                <div class="columns has-text-centered">
-                  <!-- we make sure all our dext in this row has centered text -->
+                <div id="gameBody" style="background-color:white">
+                <div class="columns has-text-centered" >
+                  <!-- we make sure all our text in this row has centered text -->
                   <div class="column">
                     <h1 class="title">
                       Welcome
@@ -99,6 +97,7 @@
                     </button>
                   </div>
                 </div>
+            </div>
               </section>
               <section class="section">
                 <h1 id="score" class="subtitle">
