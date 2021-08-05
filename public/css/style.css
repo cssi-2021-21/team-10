@@ -111,3 +111,11 @@
     width:10%;
     
 }
+
+/*progress bar*/
+.w3-pink, .w3-hover-pink:hover {
+    color: #fff!important;
+    background-color: #e91e63!important;
+    color:#e91e63!important;
+ 
+}

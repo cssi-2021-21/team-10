@@ -150,7 +150,7 @@ const updateGameHTML = () => {
         document.querySelector("#defenition").innerHTML = wordDefenition
         document.querySelector(`#choice1`).innerHTML = word
         for (let i = 2; i < 5; i++) {
-            document.querySelector(`#choice${i}`).innerHTML = words[i] || 'something random'
+            document.querySelector(`#choice${i}`).innerHTML = words[i] || 'random'
         }
         //this has a ton of edge cases, so I'm just hard coding it right now
     }
@@ -186,7 +186,8 @@ const onSubmit = (elementId) => {
 
 
     updateGameHTML()
-    timeSecond = 10; //time reset for each question
+    timeSecond = 11; //time reset for each question
+    move();
 
 
 }
@@ -215,9 +216,10 @@ startBtn.addEventListener("click", () => {
 
 
             // clearInterval(countDown);
-            timeSecond = 10;
+            
             updateGameHTML();
-            timeSecond = 10;
+            timeSecond = 11;
+            move();
 
         }
     }, 1000);
@@ -236,18 +238,17 @@ function endCount() {
 }
 
 
-/* Working on progress bar
-updateBar = (num) => {
 
-bar= document.querySelector("#bar");
-bar.innerHTML = ' <progress class="progress"  value="${num+=10}" max="100">${num+=10}%</progress>'
+//progress bar
+var width = 1;
+
+function move() {
+  var elem = document.getElementById("myBar");
+    if (width < 100) {
+      width+=9;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1 + '%';
+    }
+  
 }
-*/
-
-
-
-
-
-
-
 

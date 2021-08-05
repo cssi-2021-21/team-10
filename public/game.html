@@ -37,6 +37,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <title>Vocab Quiz</title>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
                 <link rel="stylesheet" href="css/style.css" type="text/css" />
             </head>
 
@@ -62,8 +63,11 @@
                             </div>
                         </section>
 
-                        <div id="bar">
-                            <progress class="progress" value="0" max="100">0%</progress>
+                        <!-- <div >  
+                            <progress class="progress" value="1" max="100" id="bar">0%</progress>
+                        </div> -->
+                        <div class="w3-light-grey w3-round-large">
+                            <div id="myBar" class="w3-container w3-pink w3-center w3-round-large" style="width:0%; color:#ff054c"> 0%</div>
                         </div>
                         <br>
                         <div id="gameBody" style="background-color:white">
@@ -130,8 +134,8 @@
 
                     <div class="tile is-ancestor">
                         <div class="tile is-parent is-4">
-                            <div class="tile is-child notification is-info"  id="tile1">
-                                <p  id="score">Score: 0</p>
+                            <div class="tile is-child notification is-info" id="tile1">
+                                <p id="score">Score: 0</p>
                             </div>
                         </div>
                     </div>
