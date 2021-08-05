@@ -117,7 +117,13 @@ const updateGameHTML =  () => {
     if (!wordEntry.length) {
         alert('The game has finished!')
         window.location = '../results.html'
-        //push to firebase here I guess
+        //push the words to firebase here
+
+        /*
+
+
+
+        */
     }
     else {
         const entry = wordEntry.pop()
@@ -141,7 +147,6 @@ const updateGameHTML =  () => {
 }
 
 
-
 const onSubmit =  (elementId) => {
   console.log(words)
   const element = document.querySelector(`#${elementId}`)
@@ -154,5 +159,69 @@ const onSubmit =  (elementId) => {
       scoreVal.innerHTML = `Score : ${++score}`
       console.log('score', score)
   }
-  updateGameHTML()
+
+    updateGameHTML()
+    timeSecond = 11; //time reset for each question
+    move(); //progress bar
+
 }
+
+//time
+timeSecond = 10;
+const startBtn = document.querySelector("#startBtn")
+startBtn.addEventListener("click", () => {
+    defenition = document.querySelector("#defenition")
+    defenition.classList.remove("hidden")
+    hiddenTile = document.querySelector("#hiddenTile")
+    hiddenTile.classList.remove("hidden");
+    const timeH = document.querySelector("h1");
+    //const startBtn= document.querySelector("#startBtn")
+    startBtn.style.display = 'none';
+    displayTime(timeSecond);
+
+    const countDown = setInterval(() => {
+        timeSecond--;
+        displayTime(timeSecond);
+        if (timeSecond == 0 || timeSecond < 1) {
+            /* endCount();
+              times[index] = 10- timeSecond;
+              index+=1; */
+
+
+            // clearInterval(countDown);
+            
+            updateGameHTML();
+            timeSecond = 11;
+            move();
+
+        }
+    }, 1000);
+    function displayTime(second) {
+        const min = Math.floor(second / 60);
+        const sec = Math.floor(second % 60);
+        timeH.innerHTML = ` <b><font size="8">
+  ${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}</font></b>
+  `;
+    }
+
+})
+
+function endCount() {
+    timeH.innerHTML = "Time out";
+}
+//end of time functions
+
+
+//progress bar
+var width = 1;
+
+function move() {
+  var elem = document.getElementById("myBar");
+    if (width < 100) {
+      width+=9;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1 + '%';
+    }
+
+}
+
