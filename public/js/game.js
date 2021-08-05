@@ -1,8 +1,8 @@
 console.log('game script is running!')
-console.log('api key', key)
 
 let googleUserId
 let words
+let wordEntry 
 let score = 0
 //when the user starts the game, we load up a list of words 
 window.onload =  (event) => {
@@ -10,7 +10,7 @@ window.onload =  (event) => {
         if (user) {
             //check if the user has logged in
             googleUserId = user.uid
-            getWords(googleUserId)
+            gameUpdate(googleUserId)
         }
         else {
             //navigate back to the login page
@@ -20,37 +20,35 @@ window.onload =  (event) => {
     )
 }
 
-//gets the words from the database
-const getWords = async (userId) => {
-    //we now make an api call to get a list of words. We loop through the list of words to make sure they aren't repeated
-    console.log('called')
-    words =  new Set(await res.json())
-    
-    //we now choose a set or random elements from our list of words- from our list of words
-    const seenWords = getPastSeenWords(userId)
-    for(const seenWord of seenWords){
-        words.delete(seenWord)
-    }
-    //words is now a set of words that the user hasn't seen before. We now just take the first 10 elements 
-    words = ([...words]).slice(0, 10) //converting it into an array and taking the first 10 words from it
-    if(words.length < 10){
-        //inform the user that we have run out of words
-        alert('Sorry, but we have run out of words. Come back later when we have updated our database')
-        window.location = '../index.html'
-    }
-    else{
-        //update this by rendering it into html
-        updateGameHTML()
-    }
+const gameUpdate = async (userID) => {
+    const pastWords = getPastSeenWords(userID)
+    words = await getWords(pastWords)
+    wordEntry = Array.from(words)
+    updateGameHTML()    
 }
 
-const getWord = async (wordsGotten, previousWords) => {
+const getWords = async (wordsGotten) => {
         const randomWordAPI = 'https://random-words-api.vercel.app/word' 
         const res = await fetch(randomWordAPI)
-        let word = await res.json()
-        while (wordsGotten.has(word) && previousWords.has(word)){
-            word = await( await fetch(randomWordAPI))
+        let ret = await (await fetch(randomWordAPI)).json()
+        let count = 0
+        let set = 0
+        const words = new Map()
+        while ( count < 10 && set < 20){
+            ret = await( await fetch(randomWordAPI)).json()
+            let word = ret[0].word
+            let definition = ret[0].definition
+            if(!(wordsGotten.has(word) && words.has(word))){
+                words.set(word, definition)
+                count ++
+            }
+            set ++ 
         }
+        if(count < 10){
+            alert('Sorry, but we have run out of words. Come back later when we have updated our database')
+            window.location = '../index.html'
+        }
+        return words
 }
 
 /*
@@ -114,41 +112,44 @@ const getPastSeenWords = (userId) => {
 }
 
 //this updates the html
-const updateGameHTML = async () => {
-    console.log('words', words)
-    if (!words.length) {
+const updateGameHTML =  () => {
+    console.log('words', wordEntry)
+    if (!wordEntry.length) {
         alert('The game has finished!')
         window.location = '../results.html'
+        //push to firebase here I guess
     }
     else {
-        const word = words.pop()
-        console.log('word', word)
-        const wordDefenition = await getWordDefenition(word)
+        const entry = wordEntry.pop()
+        const word = entry[0]
+        const wordDefenition =  entry[1]
         console.log('its defenition', wordDefenition)
         document.querySelector("#defenition").innerHTML = wordDefenition
         document.querySelector(`#choice1`).innerHTML = word
-        for (let i = 2; i < 5; i++) {
-            document.querySelector(`#choice${i}`).innerHTML = words[i] || 'random'
+        let i = 2
+        for (let key of words.keys()) {
+            if(key !== word){
+                document.querySelector(`#choice${i}`).innerHTML = key
+                i++
+            }
+            if(i == 5){
+                break
+            }
         }
-        //this has a ton of edge cases, so I'm just hard coding it right now
+        //did a bit of hardcoding but I can fix this later
     }
 }
 
-const getWordDefenition = async (word) => {
-    const url = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}`
-    const res = await fetch(url)
-    const myJsonResponse = await res.json()
-    console.log(myJsonResponse[0].meanings[0].definitions[0].definition)    
-   return myJsonResponse[0].meanings[0].definitions[0].definition
-}
 
-const onSubmit = async (elementId) => {
+
+const onSubmit =  (elementId) => {
   console.log(words)
   const element = document.querySelector(`#${elementId}`)
   const word = element.innerHTML.trim().replace(/[\r\n]+/gm, '')
   const defenition = document.querySelector("#defenition").innerHTML.trim().replace(/[\r\n]+/gm, '')
-  const actualWordDefenition = await getWordDefenition(word)
-  if(actualWordDefenition === defenition){
+  const actualWordDefenition =  words.get(word)
+
+  if(actualWordDefenition.replace(/\s+/g, "") === defenition.replace(/\s+/g, "")){
       const scoreVal = document.querySelector("#score")
       scoreVal.innerHTML = `Score : ${++score}`
       console.log('score', score)
