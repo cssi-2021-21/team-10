@@ -184,7 +184,6 @@ const onSubmit = (elementId) => {
     }
 
 
-
     updateGameHTML()
     timeSecond = 11; //time reset for each question
     move();
