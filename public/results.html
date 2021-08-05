@@ -40,9 +40,20 @@
            Your score total is: 
         </p>
         <p class="subtitle is-size-6" style="text-align:center" id="totalScore">
-           score here 
+           score here
         </p>
 
+
+          <button id="leaderBtn" class="button is-danger is-active vertical-align:middle">
+                    Go back to leaderboard
+                </button>
+                <script>
+                    leaderBtn= document.querySelector("#leaderBtn");
+                    leaderBtn.addEventListener("click", () => {
+                         window.location = '../leaderboard.html';
+                    })
+                </script>
+        
     </div>
 
 </body>

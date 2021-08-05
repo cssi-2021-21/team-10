@@ -7,12 +7,12 @@ let score = 0
 //when the user starts the game, we load up a list of words 
 window.onload =  (event) => {
     firebase.auth().onAuthStateChanged((user) => {
-        if(user){
+        if (user) {
             //check if the user has logged in
             googleUserId = user.uid
             getWords(googleUserId)
         }
-        else{
+        else {
             //navigate back to the login page
             window.location = "index.html"
         }
@@ -116,21 +116,21 @@ const getPastSeenWords = (userId) => {
 //this updates the html
 const updateGameHTML = async () => {
     console.log('words', words)
-    if(!words.length){
+    if (!words.length) {
         alert('The game has finished!')
-        window.location = '../results.html' 
+        window.location = '../results.html'
     }
-    else{
+    else {
         const word = words.pop()
         console.log('word', word)
         const wordDefenition = await getWordDefenition(word)
         console.log('its defenition', wordDefenition)
         document.querySelector("#defenition").innerHTML = wordDefenition
         document.querySelector(`#choice1`).innerHTML = word
-        for(let i = 2; i < 5; i++){
-            document.querySelector(`#choice${i}`).innerHTML = words[i] || 'something random'
+        for (let i = 2; i < 5; i++) {
+            document.querySelector(`#choice${i}`).innerHTML = words[i] || 'random'
         }
-    //this has a ton of edge cases, so I'm just hard coding it right now
+        //this has a ton of edge cases, so I'm just hard coding it right now
     }
 }
 

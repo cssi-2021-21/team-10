@@ -1,0 +1,121 @@
+#choice1 {
+  background-color:  #051c9e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 24px;
+  margin: 4px 2px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+#choice1:hover {opacity: 1}
+#choice2 {
+  background-color:  #051c9e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 24px;
+  margin: 4px 2px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+#choice2:hover {opacity: 1}
+
+#choice3 {
+  background-color:  #051c9e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 24px;
+  margin: 4px 2px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+#choice3:hover {opacity: 1}
+
+#choice4 {
+  background-color: #051c9e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 24px;
+  margin: 4px 2px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+#choice4:hover {opacity: 1}
+
+
+
+#gameBody{
+    background-color: white;
+      border:goldenrod;
+      padding:20px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+#startBtn{
+      text-align: center;
+      border-radius: 50%;
+      font-size: 15px;
+      background-color:#fc0345;
+    
+}
+#startBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#hiddenTile{
+    background-color:gainsboro;
+    text-align:center;
+}
+ #count{
+      font-size: 15px;
+ }
+
+
+ #vocab{
+     font-size: 100px;
+ 
+ }
+
+ #mainSub{
+     color:rgb(49, 49, 46);
+ }
+ #defenition{
+      font-weight: bold;
+ }
+
+#mainSec {
+     background-image: url('https://www.studyright.net/wp-content/uploads/2014/07/use-flashcards-effectively.jpg');
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+                }
+
+
+#tile1{
+    background-color: #fc0345;
+    width:10%;
+    
+}
+
+/*progress bar*/
+.w3-pink, .w3-hover-pink:hover {
+    color: #fff!important;
+    background-color: #e91e63!important;
+    color:#e91e63!important;
+ 
+}
