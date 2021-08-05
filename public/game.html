@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <section class="section" id="mainSec" style="background-color:#f5d142">
+    <section class="section" id="mainSec">
         <div class="container">
             <html lang="en">
 
@@ -45,7 +45,7 @@
 
             <body>
 
-                <section class="hero is-small notification is-info has-text-centered">
+                <section class=" has-text-centered">
                     <div class="hero-body">
                         <p class="title" id="vocab">
                             Vocabulary Quiz
@@ -58,18 +58,25 @@
                 </section>
                 <div class="container">
                     <section class="section">
-                        <section id="timer">
-                            <div class="container">
-                                <h1 id="count"><b>00:00</b></h1>
+                        <div class="tile is-ancestor">
+                            <div class="tile is-parent is-4">
+                                <div class="tile is-child notification is-info" style="background-color: 	#edd0bc
+">
+                                    <section id="timer">
+                                        <div class="container">
+                                            <h1 style="text-align:center" id="count"><b>00:00</b></h1>
+                                        </div>
+                                    </section>
+                                </div>
                             </div>
-                        </section>
+                        </div>
 
                         <!-- <div >  
                             <progress class="progress" value="1" max="100" id="bar">0%</progress>
                         </div> -->
                         <div class="w3-light-grey w3-round-large">
                             <div id="myBar" class="w3-container w3-pink w3-center w3-round-large"
-                                style="width:0%; color:#ff054c"> 0%</div>
+                                style="width:0%; color:#057062"> 0%</div>
                         </div>
                         <br>
                         <div id="gameBody" style="background-color:white">
@@ -78,13 +85,14 @@
                             <div class="columns has-text-centered">
                                 <!-- we make sure all our text in this row has centered text -->
                                 <div class="column" style="background-color: white">
-                                    <h1 class="title">
+                                    <h1 class="title" style="color:#8f3206
+">
                                         Welcome
                                     </h1>
-                                    <h2 class="subtitle">
+                                    <h2 class="subtitle" style="color:#8f3206">
                                         Can you guess the word based on its meaning?
                                     </h2>
-                                    <h1 id="defenition" class="subtitle hidden" style="color:crimson"></h1>
+                                    <h1 id="defenition" class="subtitle hidden" style="color:#079677"></h1>
                                 </div>
                             </div>
                             <!-- ROW 2 -->
@@ -100,7 +108,7 @@
                                 <div class="tile is-parent is-4">
                                     <div class="tile is-child notification is-info  has-text-centered hidden"
                                         id="hiddenTile">
-                                        <div class="columns">
+                                        <div class="columns" style="text-align:center">
                                             <div class="column">
                                                 <button id="choice1" class="button is-large is-fullwidth "
                                                     onclick="onSubmit(this.id)">
@@ -127,26 +135,27 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <div class="tile is-ancestor">
-                        <div class="tile is-parent is-4">
-                            <div class="tile is-child notification is-info" id="tile1">
-                                <p id="score">Score: 0</p>
+                        <br>
+                        <div class="tile is-ancestor">
+                            <div class="tile is-parent is-4">
+                                <div class="tile is-child notification is-info" id="tile1">
+                                    <p id="score">Score: 0</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
-
+                    </section>
 
                 </div>
 
     </section>
-  
+
     </div>
-    <footer class="footer notification is-info mt-5 mb-0">
+    <footer class="footer notification is-info mt-5 mb-0" style="background-color:	#edd0bc
+">
         <div class="content has-text-centered">
-            <p class="subtitle">
+            <p class="subtitle" style="color:rgb(124, 10, 34)">
                 Thanks for playing!
             </p>
         </div>
@@ -157,13 +166,13 @@
 </html>
 </div>
 </section>
- </body>
-    <script src="./js/game.js" type="text/javascript"></script>
-    =======
-    </body>
-    <script src="./js/key.js" type="text/javascript"></script>
-    <script src="./js/game.js" type="text/javascript"></script>
+</body>
+<script src="./js/game.js" type="text/javascript"></script>
+=======
+</body>
+<script src="./js/key.js" type="text/javascript"></script>
+<script src="./js/game.js" type="text/javascript"></script>
 
-    >>>>>>> 9af27f232b3af62ef209cbd9d702675854b4d7bf
 
-    </html>
+
+</html>

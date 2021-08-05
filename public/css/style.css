@@ -1,5 +1,5 @@
 #choice1 {
-  background-color:  #051c9e;
+  background-color:  #96072d;
   border: none;
   color: white;
   padding: 16px 32px;
@@ -12,7 +12,7 @@
 
 #choice1:hover {opacity: 1}
 #choice2 {
-  background-color:  #051c9e;
+  background-color:  #96072d;
   border: none;
   color: white;
   padding: 16px 32px;
@@ -26,7 +26,7 @@
 #choice2:hover {opacity: 1}
 
 #choice3 {
-  background-color:  #051c9e;
+  background-color:  #96072d;
   border: none;
   color: white;
   padding: 16px 32px;
@@ -40,7 +40,7 @@
 #choice3:hover {opacity: 1}
 
 #choice4 {
-  background-color: #051c9e;
+  background-color: #96072d;
   border: none;
   color: white;
   padding: 16px 32px;
@@ -70,7 +70,7 @@
       text-align: center;
       border-radius: 50%;
       font-size: 15px;
-      background-color:#fc0345;
+      background-color:#96072d;
     
 }
 #startBtn:hover {
@@ -83,23 +83,29 @@
 }
  #count{
       font-size: 15px;
+    color:#96072d   ;   
  }
 
 
  #vocab{
      font-size: 100px;
+     color:white;
  
  }
 
+ .hero-body{
+background-color:	#079677;
+ }
+/*#bb6549*/
  #mainSub{
-     color:rgb(49, 49, 46);
+     color:white;
  }
  #defenition{
       font-weight: bold;
  }
 
 #mainSec {
-     background-image: url('https://www.studyright.net/wp-content/uploads/2014/07/use-flashcards-effectively.jpg');
+     background-image: url('https://images.pexels.com/photos/6070384/pexels-photo-6070384.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
      background-repeat: no-repeat;
      background-attachment: fixed;
      background-size: cover;
@@ -107,15 +113,14 @@
 
 
 #tile1{
-    background-color: #fc0345;
+    background-color:	#079677;
     width:10%;
     
 }
 
 /*progress bar*/
 .w3-pink, .w3-hover-pink:hover {
-    color: #fff!important;
-    background-color: #e91e63!important;
-    color:#e91e63!important;
+    background-color: #079677!important;
+    color:#079677!important;
  
 }
