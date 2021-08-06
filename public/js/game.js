@@ -110,7 +110,6 @@ const updateGameHTML =  () => {
     console.log('words', wordEntry)
     if (!wordEntry.length) {
         alert('The game has finished!')
-        window.location = '../results.html'
         //push the words to firebase here
 
         /*
@@ -120,19 +119,24 @@ const updateGameHTML =  () => {
         */
        console.log('userid', googleUserId)
        console.log('game score', score)
+       console.log('stats', statistics)
+       console.log('words', words)
+       console.log('game data', getGameData()) 
        
         const ref = firebase.database().ref(`users/${googleUserId}`)
         ref.push(
             {   gameScore : score,
-                wordData: getGameData()
+                wordData: JSON.parse(JSON.stringify(getGameData()))
             }
         )
+        /*
         ref.on('value', (snapshot) => {
             const data = snapshot.val()
 
         })
-        console.log('game data', getGameData())    
-
+        */
+        window.location = '../results.html'
+ 
     }
     else {
         //if the game hasn't finished, then pop a new word
@@ -160,7 +164,7 @@ const getGameData = () => {
     const gameData = {}
     for(const key of words.keys()){
         gameData[key] = {
-            status : statistics.get(key),
+            status : statistics.get(key) || 'Incorrect',
             definition : words.get(key)
         }
     }
@@ -232,8 +236,8 @@ startBtn.addEventListener("click", () => {
 
             // clearInterval(countDown);
             const word = getCorrectWord(getDefinitionOnDisplay()) //getting the 
-            statistics.set(word, 'Time ran out') //keeping track of statistics
-            updateGameHTML();
+
+            updateGameHTML()
             timeSecond = 11;
             move();
 
