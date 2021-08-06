@@ -2,6 +2,7 @@ console.log('game script is running!')
 
 let googleUserId
 let words
+let statistics 
 let wordEntry 
 let score = 0
 //when the user starts the game, we load up a list of words 
@@ -10,20 +11,22 @@ window.onload =  (event) => {
         if (user) {
             //check if the user has logged in
             googleUserId = user.uid
+            console.log('google user id', googleUserId)
             gameUpdate(googleUserId)
         }
         else {
             //navigate back to the login page
-            window.location = "index.html"
+            window.location = "./index.html"
         }
     }
     )
 }
 
-const gameUpdate = async (userID) => {
-    const pastWords = getPastSeenWords(userID)
+const gameUpdate = async (userId) => {
+    const pastWords = getPastSeenWords(userId)
     words = await getWords(pastWords)
     wordEntry = Array.from(words)
+    statistics = new Map()
     updateGameHTML()    
 }
 
@@ -54,7 +57,8 @@ const getWords = async (wordsGotten) => {
 /*
 
 users:
-    userId:{
+
+    user:{
         highScore : //stores number correct
         p1:{ 
             wordData : {
@@ -66,28 +70,18 @@ users:
 
         p2 : {
             wordData :{
-                w1 : false
-                w2 : true
-                w3 : false
-            }
-        }
-    }
-    ,
-    userId:{
-        highScore : //stores number correct
-        p1:{ 
-            wordData : {
-                w1: false 
-                w2: true
-
-            }
-        }
-
-        p2 : {
-            wordData :{
-                w1 : false
-                w2 : true
-                w3 : false
+                w1 : {
+                    correct : true/false
+                    defenition :'something something'
+                }
+                w2 : {
+                    correct : true/false
+                    defenition : 'something something"
+                }
+                w3 : {
+                    correct: true/false
+                    defenition : 'something something'
+                }
             }
         }
     }
@@ -120,12 +114,28 @@ const updateGameHTML =  () => {
         //push the words to firebase here
 
         /*
-
+        we're going to add to the database and also delete words from the database 
 
 
         */
+       console.log('userid', googleUserId)
+       console.log('game score', score)
+       
+        const ref = firebase.database().ref(`users/${googleUserId}`)
+        ref.push(
+            {   gameScore : score,
+                wordData: getGameData()
+            }
+        )
+        ref.on('value', (snapshot) => {
+            const data = snapshot.val()
+
+        })
+        console.log('game data', getGameData())    
+
     }
     else {
+        //if the game hasn't finished, then pop a new word
         const entry = wordEntry.pop()
         const word = entry[0]
         const wordDefenition =  entry[1]
@@ -146,18 +156,32 @@ const updateGameHTML =  () => {
     }
 }
 
+const getGameData = () => {
+    const gameData = {}
+    for(const key of words.keys()){
+        gameData[key] = {
+            status : statistics.get(key),
+            definition : words.get(key)
+        }
+    }
+    return gameData
+}
 
+//triggers when a button is pressed
 const onSubmit =  (elementId) => {
   console.log(words)
-  const element = document.querySelector(`#${elementId}`)
-  const word = element.innerHTML.trim().replace(/[\r\n]+/gm, '')
-  const defenition = document.querySelector("#defenition").innerHTML.trim().replace(/[\r\n]+/gm, '')
+  const word = getWordOnButton(elementId)
+  const defenition = getDefinitionOnDisplay()
   const actualWordDefenition =  words.get(word)
 
   if(actualWordDefenition.replace(/\s+/g, "") === defenition.replace(/\s+/g, "")){
+      statistics.set(word, 'Correct')
       const scoreVal = document.querySelector("#score")
       scoreVal.innerHTML = `Score : ${++score}`
       console.log('score', score)
+  }
+  else{
+      statistics.set(getCorrectWord(defenition), 'Incorrect')
   }
 
     updateGameHTML()
@@ -165,6 +189,24 @@ const onSubmit =  (elementId) => {
     move(); //progress bar
 
 }
+//gets word on the button
+const getWordOnButton= (elementId) => {
+    const element = document.querySelector(`#${elementId}`)
+    return element.innerHTML.trim().replace(/[\r\n]+/gm, '')
+}
+//gets word defenition 
+const getDefinitionOnDisplay = () => {
+    return document.querySelector("#defenition").innerHTML.trim().replace(/[\r\n]+/gm, '')
+}
+//gets word based on the defenition
+const getCorrectWord = (defenition) => {
+    for(let key of words.keys() ){
+        if (words.get(key).replace(/[\r\n]+/gm, '') === defenition.replace(/[\r\n]+/gm, '')){
+            return key
+        }
+    }
+}
+
 
 //time
 timeSecond = 10;
@@ -189,7 +231,8 @@ startBtn.addEventListener("click", () => {
 
 
             // clearInterval(countDown);
-            
+            const word = getCorrectWord(getDefinitionOnDisplay()) //getting the 
+            statistics.set(word, 'Time ran out') //keeping track of statistics
             updateGameHTML();
             timeSecond = 11;
             move();
