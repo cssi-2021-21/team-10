@@ -129,14 +129,8 @@ const updateGameHTML =  () => {
                 wordData: JSON.parse(JSON.stringify(getGameData()))
             }
         )
-        /*
-        ref.on('value', (snapshot) => {
-            const data = snapshot.val()
-
-        })
-        */
         window.location = '../results.html'
- 
+
     }
     else {
         //if the game hasn't finished, then pop a new word
@@ -184,10 +178,7 @@ const onSubmit =  (elementId) => {
       scoreVal.innerHTML = `Score : ${++score}`
       console.log('score', score)
   }
-  else{
-      statistics.set(getCorrectWord(defenition), 'Incorrect')
-  }
-
+  //we don't have to bother about incorrect words cuz they're t
     updateGameHTML()
     timeSecond = 11; //time reset for each question
     move(); //progress bar
@@ -229,14 +220,7 @@ startBtn.addEventListener("click", () => {
         timeSecond--;
         displayTime(timeSecond);
         if (timeSecond == 0 || timeSecond < 1) {
-            /* endCount();
-              times[index] = 10- timeSecond;
-              index+=1; */
-
-
-            // clearInterval(countDown);
-            const word = getCorrectWord(getDefinitionOnDisplay()) //getting the 
-
+            
             updateGameHTML()
             timeSecond = 11;
             move();
